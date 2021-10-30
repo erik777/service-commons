@@ -1,0 +1,35 @@
+{
+  "name": "service-commons",
+  "version": "1.0.4",
+  "description": "TypeScript pattern implemenation for service clients",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
+    "prepare": "npm run test && npm run build",
+    "prepublish": "npm version patch"
+  },
+  "keywords": [
+    "TypeScript",
+    "service",
+    "http",
+    "client"
+  ],
+  "author": "OpenStandards.net",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "rxjs": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.10.1",
+    "jasmine": "^3.10.0",
+    "ts-node": "^10.4.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
