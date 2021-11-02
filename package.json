@@ -7,6 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
+    "clean": "rimraf common/*",
+    "prebuild": "npm run clean",
     "build": "tsc",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
     "prepare": "npm run test && npm run build",
