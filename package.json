@@ -1,6 +1,6 @@
 {
   "name": "service-commons",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TypeScript pattern implemenation for service clients",
   "Xmain": "index.js",
   "Xdirectories": {
