@@ -1,8 +1,10 @@
+bak/
 lib/*
 docs/
 tests/
 spec/
 node_modules/
+.settings/
 .project
 .vscode
 .nyc_output
