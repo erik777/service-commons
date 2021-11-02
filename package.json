@@ -19,7 +19,11 @@
     "client"
   ],
   "author": "OpenStandards.net",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/cli.git"
+  },
   "dependencies": {
     "axios": "^0.24.0",
     "rxjs": "^7.4.0"
