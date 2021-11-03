@@ -9,14 +9,19 @@ WebSockets: WebSocketClientService wraps a WebSocket with an rxjs Observer.
 
 ## WebSocketClientService
 
-          this.subMessages = <Subject<MessageEvent>>this.wsService
-            .create(url)
-            .map((response: MessageEvent): any => {
-              // We have to parse because message data is always text
-              const data = JSON.parse(response.data);
-              this.handleMessage(data);
-              return data;
-            });
+    const wsService = new WebSocketClientService(WebSocketEnvironment.Node);
+    const handleMessage = (data) => {
+      console.debug("data: " + data);
+    };
+    const subMessages = <Subject<MessageEvent>>wsService
+      .create(URL)
+      .pipe(
+        map((response: MessageEvent): any => {
+          // We have to parse because message data is always text
+          const data = JSON.parse(response.data);
+          handleMessage(data);
+          return data;
+        }));
 
 ## Notes
 
