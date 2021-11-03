@@ -27,8 +27,10 @@
     "url": "https://github.com/npm/cli.git"
   },
   "dependencies": {
+    "@types/ws": "^8.2.0",
     "axios": "^0.24.0",
-    "rxjs": "^7.4.0"
+    "rxjs": "^7.4.0",
+    "ws": "^8.2.3"
   },
   "devDependencies": {
     "@types/jasmine": "^3.10.1",
