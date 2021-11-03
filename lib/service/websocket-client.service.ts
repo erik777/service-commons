@@ -1,4 +1,9 @@
 import { Subject, Observable, Observer } from 'rxjs'
+import {WebSocket as NodeWebSocket} from 'ws';
+
+export enum WebSocketEnvironment { 
+  Web, Node
+}
 
 /**
  * Wraps a WebSockets client with an rxjs Observer.
@@ -9,11 +14,20 @@ import { Subject, Observable, Observer } from 'rxjs'
  */
 export class WebSocketClientService {
   private subject: Subject<MessageEvent>;
+  private env = WebSocketEnvironment.Web;
 
   static readonly WS_NOTIFY_TYPE = {OPEN: 'open', CLOSE: 'close'};
 
   log(message: string): void {
     console.debug('WebSocketService:' + message);
+  }
+
+  constructor( env?: WebSocketEnvironment ) {
+    if (env) this.env = env;
+  }
+
+  isInBrower() {
+    return WebSocketEnvironment.Web === this.env;
   }
 
   /**
@@ -31,6 +45,13 @@ export class WebSocketClientService {
 
     return this.subject;
   }
+  
+  private newSocket(url: string) {
+    if (this.isInBrower())
+      return new WebSocket(url);
+    else
+      return new NodeWebSocket(url);
+  }
 
   /**
    * Call this to create a new instance of Subject.
@@ -38,7 +59,7 @@ export class WebSocketClientService {
    * @param url 
    */
   public create(url: string): Subject<MessageEvent> {
-    const ws = new WebSocket(url);
+    const ws = this.newSocket(url);
 
     const observable = Observable.create((obs: Observer<MessageEvent>) => {
       ws.onmessage = obs.next.bind(obs);
