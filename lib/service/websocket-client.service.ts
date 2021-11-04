@@ -91,7 +91,7 @@ export class WebSocketClientService {
     const observer = {
       next: (data: Object) => {
         if (ws.readyState === 1 /* WebSocket.OPEN */) {
-          console.debug("WS Sending: " + JSON.stringify(data));
+//          console.debug("WS Sending: " + JSON.stringify(data));
           ws.send("" + JSON.stringify(data));
         } else if (ws.readyState === 0 /* WebSocket.CONNECTING */) {
           console.warn('ws.readyState still CONNECTING: ' + ws.readyState + ', data: ' + JSON.stringify(data));
