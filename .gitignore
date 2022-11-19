@@ -106,3 +106,4 @@ dist
 /common/
 /package-lock.json
 /.settings/
+.project

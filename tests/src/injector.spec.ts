@@ -16,13 +16,13 @@ class TestClass implements TestI {
 
 describe('create injector from', function() {
   it('a simple provider', function() {
-    
+
     const TOKEN = new InjectionToken<TestI>('test implementation');
     const APP_INTERFACE_PROVIDERS = [
       // define here the HttpClientI implementation you want to use
       { provide: TOKEN, useClass: TestClass, deps: [] }
     ];
-    
+
     const providers = [
       APP_INTERFACE_PROVIDERS
     ]
